@@ -1,0 +1,84 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d0f36; /* color1 */
+}
+
+.imageLogin {
+    max-width: 100px;
+    max-height: 50px;
+}
+
+.loginBox {
+    background-color: #294380;
+    background-size: cover; /* Ajusta la imagen para cubrir todo el área del div */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: 3rem;
+    max-width: 7900px;
+    color: white; /* Asegura que el texto sea legible sobre la imagen de fondo */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imageContainer {
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    height: 700px; /* Ajusta la altura según sea necesario */
+    background-image: url("https://images.unsplash.com/photo-1737042126375-10c79e59c55c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover; /* Ajusta la imagen para cubrir todo el área del div */
+    background-position: center; /* Centra la imagen en el div */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    margin-right: 15px;
+}
+
+.loginElements {
+    margin: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formGroup label {
+    font-weight: 500;
+    color: #f1f6ce; /* color5 */
+}
+
+.formGroup input {
+    padding: 0.5rem;
+    border: 1px solid #69d2cd; /* color3 */
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: rgba(41, 67, 128, 0.8); /* Semi-transparente color2 */
+    color: #b9f1d6; /* color4 */
+}
+
+.button {
+    background-color: #69d2cd; /* color3 */
+    color: #0d0f36; /* color1 */
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #b9f1d6; /* color4 */
+}
