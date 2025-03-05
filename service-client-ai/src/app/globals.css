@@ -1,6 +1,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Colores principales */
+  --primary-color: #2C2C2C;
+  --secondary-color: #0051b3;
+  --accent-color: #00a3ff;
+  
+  /* Colores neutros */
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --gray-light: #f5f5f5;
+  --gray-medium: #cccccc;
+  --gray-dark: #666666;
+  
+  /* Colores de estado */
+  --success-color: #00c853;
+  --error-color: #ff3d00;
+  --warning-color: #ffc107;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0d0f36; /* color1 */
+    background-color:var(--secondary-color); /* color1 */
 }
 
 .imageLogin {
@@ -69,7 +69,7 @@
 }
 
 .button {
-    background-color: #69d2cd; /* color3 */
+    background-color: var(--secondary-color); /* color3 */
     color: #0d0f36; /* color1 */
     padding: 0.75rem;
     border: none;
