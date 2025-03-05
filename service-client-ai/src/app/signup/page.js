@@ -2,19 +2,24 @@
 import { useState } from 'react';
 import styles from './css/signup.module.css';
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [formData, setFormData] = useState({
+    nombre: '',
     email: '',
-    password: ''
+    password: '',
+    confirmarPassword: ''
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Aquí irá tu lógica de autenticación
-      console.log('Datos del formulario:', formData);
+      if (formData.password !== formData.confirmarPassword) {
+        console.error('Las contraseñas no coinciden');
+        return;
+      }
+      console.log('Datos del formulario de registro:', formData);
     } catch (error) {
-      console.error('Error al iniciar sesión:', error);
+      console.error('Error al registrar usuario:', error);
     }
   };
 
@@ -29,15 +34,26 @@ export default function LoginPage() {
   return (
     <div className={styles.container}>
       <div className={styles.loginBox}>
-          <div className={styles.imageContainer}>
-          </div>
-          <div className={styles.loginElements}>
-          <h1>Iniciar Sesión</h1>
+        <div className={styles.imageContainer}>
+        </div>
+        <div className={styles.loginElements}>
+          <h1>Registro de Usuario</h1>
           <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.formGroup}>
+              <label htmlFor="nombre">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                required
+              />
+            </div>
             <div className={styles.formGroup}>
               <label htmlFor="email">Email</label>
               <input
-                type="user"
+                type="email"
                 id="email"
                 name="email"
                 value={formData.email}
@@ -56,8 +72,19 @@ export default function LoginPage() {
                 required
               />
             </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="confirmarPassword">Confirmar Contraseña</label>
+              <input
+                type="password"
+                id="confirmarPassword"
+                name="confirmarPassword"
+                value={formData.confirmarPassword}
+                onChange={handleChange}
+                required
+              />
+            </div>
             <button type="submit" className={styles.button}>
-              Iniciar Sesión
+              Registrarse
             </button>
           </form>
         </div>
