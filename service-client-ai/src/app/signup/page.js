@@ -89,7 +89,7 @@ export default function SignupPage() {
               />
             </div>
             <button type="submit" className={styles.button}>
-              Registrarse
+              Continuar
             </button>
           </form>
           </div>

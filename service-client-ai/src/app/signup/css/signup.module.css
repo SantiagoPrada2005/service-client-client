@@ -55,7 +55,7 @@
   .formGroup label {
     font-weight: 500;
     color: #000000; /* color5 */
-    font-size: medium;
+    font-size: 0.95rem;  /* Tamaño de la letra */
   }
   
   .formGroup {
@@ -69,10 +69,10 @@
     padding: 0.6rem;
     border: 0.9px solid #dbe0e8; /* border color recuadros labeltext */
     border-radius: 5.5px;
-    font-size: 1rem;
+    font-size: 110%;
     background-color: rgba(255, 255, 255, 0.8); /* recuadros labeltext */
     color: #000000; /* color del texto */
-    margin-bottom: 1%;
+    margin-bottom: 0.5%; /* separacion entre bloques*/
   }
 
   .formGroup input:focus {
@@ -102,7 +102,7 @@
 
   .formWrapper {
     width: 100%;
-    max-width: 580px;     /* Limita el ancho para que sea más estrecho */
+    max-width: 525px;     /* Limita el ancho para que sea más estrecho */
     margin: 0 auto;       /* Centra horizontalmente si lo necesitas */
     padding: 2rem;        /* Espacio interno */
     background-color: #fff;
