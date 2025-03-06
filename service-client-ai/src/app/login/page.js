@@ -36,11 +36,11 @@ export default function LoginPage() {
           <h1>Iniciar Sesión</h1>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Usuario</label>
               <input
                 type="user"
-                id="email"
-                name="email"
+                id="username"
+                name="username"
                 value={formData.email}
                 onChange={handleChange}
                 required
