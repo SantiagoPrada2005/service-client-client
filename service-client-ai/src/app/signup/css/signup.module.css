@@ -29,20 +29,24 @@
     background-repeat: no-repeat;
   }
   
+  
+  /*                                 */
   /* Sección derecha (el formulario) */
+  /*                                 */
   .loginElements {
-    flex: 1; /* Para que ocupe la otra mitad */
-    /* Un color de fondo para distinguirlo de la imagen */
-    background-color: #ffffff; /* color de fondo formulario */
+    flex: 0.9; /* Para que ocupe la otra mitad */
+    background-color: #ffffff; /* Un color de fondo para distinguirlo de la imagen */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centra verticalmente el formulario */
-    padding: 2rem; /* Ajusta según tu gusto */
+    padding: 1%; /* Ajusta el margen del recuadro */
     color: #000000; /* color del titulo*/
     font-size: 0.8em; /* tamaño del texto del titulo*/
   }
-  
+
+  /*                         */
   /* Ajustamos el formulario */
+  /*                         */
   .form {
     display: flex;
     flex-direction: column;
@@ -81,9 +85,6 @@
     box-shadow: 0 0 0 1.7px #0055ff;
   }
   
-  
-  
-  
   /* Botón */
   .button {
     background-color: var(--secondary-color); /* color3 */
@@ -100,9 +101,12 @@
     background-color: #383838; /* color4 color cuando se pasa el mouse por encima*/
   }
 
+
+
+  
   .formWrapper {
     width: 100%;
-    max-width: 525px;     /* Limita el ancho para que sea más estrecho */
+    max-width: 500px;     /* Limita el ancho para que sea más estrecho */
     margin: 0 auto;       /* Centra horizontalmente si lo necesitas */
     padding: 2rem;        /* Espacio interno */
     background-color: #fff;
@@ -110,10 +114,12 @@
     border-radius: 6px;
     /* box-shadow: 0 3px 6px rgba(0,0,0,0.1);  Sombra sutil */
   }
-  
-  /* Ejemplo: en signup.module.css */
+
+  /*                              */
+  /* Ajustes adicionales (Titulo) */
+  /*                              */
   .formWrapper h1 {
-    margin-bottom: 1.7rem; /* Ajusta la separación */
+    margin-bottom: 1.5rem; /* Ajusta la separación */
     font-size: 0.5xp;       /* Ajusta el tamaño de la fuente */
     /* Puedes añadir más propiedades, como font-weight, line-height, etc. */
   }

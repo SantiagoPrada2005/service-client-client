@@ -35,6 +35,8 @@ export default function SignupPage() {
     <div className={styles.container}>
       <div className={styles.loginBox}>
         <div className={styles.sidebarContainer}>
+          
+
         
         </div>
         <div className={styles.loginElements}>
@@ -93,7 +95,6 @@ export default function SignupPage() {
               Registrarse
             </button>
           </form>
-          
           </div>
         </div>
       </div>

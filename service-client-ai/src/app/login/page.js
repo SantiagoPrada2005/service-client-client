@@ -1,10 +1,12 @@
 'use client';
 import { useState } from 'react';
 import styles from './css/login.module.css';
+import Link from 'next/link';
+
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
   });
 
@@ -36,9 +38,9 @@ export default function LoginPage() {
           <h1>Iniciar Sesión</h1>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
-              <label htmlFor="email">Usuario</label>
+              <label htmlFor="username">Usuario</label>
               <input
-                type="user"
+                type="text"
                 id="username"
                 name="username"
                 value={formData.email}
@@ -60,6 +62,7 @@ export default function LoginPage() {
             <button type="submit" className={styles.button}>
               Iniciar Sesión
             </button>
+            <p>¿No tienes cuenta? </p> <Link href='/signup'>Registrarse</Link>
           </form>
           </div>
         </div>

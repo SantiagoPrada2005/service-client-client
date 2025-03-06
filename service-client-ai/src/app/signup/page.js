@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './css/signup.module.css';
+import Link from 'next/link';
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -38,7 +39,7 @@ export default function SignupPage() {
         </div>
         <div className={styles.loginElements}>
         <div className={styles.formWrapper}>
-          <h1>Registro de Usuario</h1>
+          <h1>Registro</h1>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
               <label htmlFor="username">Usuario</label>
@@ -91,6 +92,7 @@ export default function SignupPage() {
             <button type="submit" className={styles.button}>
               Continuar
             </button>
+            <p>¿Tienes cuenta? </p><Link href='/login'>Inicia Sesion</Link>
           </form>
           </div>
         </div>
