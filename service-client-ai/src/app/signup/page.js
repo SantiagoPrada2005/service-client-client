@@ -4,7 +4,7 @@ import styles from './css/signup.module.css';
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
-    nombre: '',
+    username: '',
     email: '',
     password: '',
     confirmarPassword: ''
@@ -37,27 +37,30 @@ export default function SignupPage() {
         <div className={styles.imageContainer}>
         </div>
         <div className={styles.loginElements}>
+        <div className={styles.formWrapper}>
           <h1>Registro de Usuario</h1>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
-              <label htmlFor="nombre">Nombre</label>
+              <label htmlFor="username">Usuario</label>
               <input
                 type="text"
-                id="nombre"
-                name="nombre"
-                value={formData.nombre}
+                id="username"
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
+                placeholder="Usuario"
                 required
               />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Correo electronico</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="Correo electronico"
                 required
               />
             </div>
@@ -69,6 +72,7 @@ export default function SignupPage() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
+                placeholder="Contraseña"
                 required
               />
             </div>
@@ -80,6 +84,7 @@ export default function SignupPage() {
                 name="confirmarPassword"
                 value={formData.confirmarPassword}
                 onChange={handleChange}
+                placeholder="Confirmar Contraseña"
                 required
               />
             </div>
@@ -87,6 +92,7 @@ export default function SignupPage() {
               Registrarse
             </button>
           </form>
+          </div>
         </div>
       </div>
     </div>

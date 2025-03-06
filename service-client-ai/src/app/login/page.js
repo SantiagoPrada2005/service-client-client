@@ -32,6 +32,7 @@ export default function LoginPage() {
           <div className={styles.imageContainer}>
           </div>
           <div className={styles.loginElements}>
+          <div className={styles.formWrapper}>
           <h1>Iniciar Sesión</h1>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
@@ -60,6 +61,7 @@ export default function LoginPage() {
               Iniciar Sesión
             </button>
           </form>
+          </div>
         </div>
       </div>
     </div>

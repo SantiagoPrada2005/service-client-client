@@ -1,84 +1,120 @@
+/* signup.module.css */
+
 .container {
+    /* Ocupa el alto completo de la ventana */
     min-height: 100vh;
+    /* Para hacer un split screen, el container debe ser un flex sin centrar horizontalmente */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:var(--secondary-color); /* color1 */
-}
-
-.imageLogin {
-    max-width: 100px;
-    max-height: 50px;
-}
-
-.loginBox {
-    background-color: #294380;
-    background-size: cover; /* Ajusta la imagen para cubrir todo el área del div */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Si quieres algo de padding alrededor, puedes agregarlo aquí */
+    background-color: var(--secondary-color); /* color1 */
+  }
+  
+  .loginBox {
+    /* Quitamos márgenes muy grandes para que ocupe la pantalla completa en modo split */
     width: 100%;
-    margin: 3rem;
-    max-width: 7900px;
-    color: white; /* Asegura que el texto sea legible sobre la imagen de fondo */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.imageContainer {
-    width: 100%; /* Ajusta el ancho según sea necesario */
-    height: 700px; /* Ajusta la altura según sea necesario */
+    height: 100vh; /* Si deseas que ocupe toda la altura */
+    display: flex; 
+    /* Ya no necesitas justify-content ni align-items aquí 
+       si quieres que la imagen y el formulario se alineen en paralelo */
+    margin: 0; /* o lo ajustas a tu preferencia */
+    border-radius: 0; /* opcional, si no deseas bordes redondeados */
+  }
+  
+  /* Sección izquierda (la imagen) */
+  .imageContainer {
+    flex: 1; /* Para que ocupe la mitad del contenedor */
     background-image: url("https://images.unsplash.com/photo-1737042126375-10c79e59c55c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-size: cover; /* Ajusta la imagen para cubrir todo el área del div */
-    background-position: center; /* Centra la imagen en el div */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    margin-right: 15px;
-}
-
-.loginElements {
-    margin: 1rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
-}
-
-.form {
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+  }
+  
+  /* Sección derecha (el formulario) */
+  .loginElements {
+    flex: 1; /* Para que ocupe la otra mitad */
+    /* Un color de fondo para distinguirlo de la imagen */
+    background-color: #ffffff; /* color de fondo formulario */
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-}
-
-.formGroup {
+    justify-content: center; /* Centra verticalmente el formulario */
+    padding: 2rem; /* Ajusta según tu gusto */
+    color: #000000; 
+  }
+  
+  /* Ajustamos el formulario */
+  .form {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
+    gap: 0.7rem;
+  }
+  
+  /* Grupos de formulario (label + input) */
 
-.formGroup label {
+  
+  .formGroup label {
     font-weight: 500;
-    color: #f1f6ce; /* color5 */
-}
+    color: #000000; /* color5 */
+    font-size: 0.5xp;
+  }
+  
+  .formGroup {
+    margin-bottom: 0.3rem; /* Ajusta según quieras */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Pequeño espacio entre label y input */
+  }
 
-.formGroup input {
-    padding: 0.5rem;
-    border: 1px solid #69d2cd; /* color3 */
-    border-radius: 4px;
+  .formGroup input {
+    padding: 0.6rem;
+    border: 0.9px solid #dbe0e8; /* border color recuadros labeltext */
+    border-radius: 5.5px;
     font-size: 1rem;
-    background-color: rgba(41, 67, 128, 0.8); /* Semi-transparente color2 */
-    color: #b9f1d6; /* color4 */
-}
+    background-color: rgba(255, 255, 255, 0.8); /* recuadros labeltext */
+    color: #000000; /* color del texto */
+    
+  }
 
-.button {
+  .formGroup input:focus {
+    outline: none;              /* Elimina el borde de enfoque predeterminado del navegador */
+    border: 1.59px solid #dbe0e8;  /* Cambia el color y grosor del borde a tu preferencia */
+    box-shadow: 0 0 0 1.7px #0055ff;
+  }
+  
+  
+  
+  
+  /* Botón */
+  .button {
     background-color: var(--secondary-color); /* color3 */
-    color: #0d0f36; /* color1 */
+    color: #ffffff; /* color del texto de registro */
     padding: 0.75rem;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s;
-}
+  }
+  
+  .button:hover {
+    background-color: #383838; /* color4 color cuando se pasa el mouse por encima*/
+  }
 
-.button:hover {
-    background-color: #b9f1d6; /* color4 */
-}
+  .formWrapper {
+    width: 100%;
+    max-width: 580px;     /* Limita el ancho para que sea más estrecho */
+    margin: 0 auto;       /* Centra horizontalmente si lo necesitas */
+    padding: 2rem;        /* Espacio interno */
+    background-color: #fff;
+    /* border: 1px solid #d0d7de;  /* Borde gris claro, estilo GitHub */
+    border-radius: 6px;
+    /* box-shadow: 0 3px 6px rgba(0,0,0,0.1);  Sombra sutil */
+  }
+  
+  /* Ejemplo: en signup.module.css */
+  .formWrapper h1 {
+    margin-bottom: 1.7rem; /* Ajusta la separación */
+    font-size: 0.5xp;       /* Ajusta el tamaño de la fuente */
+    /* Puedes añadir más propiedades, como font-weight, line-height, etc. */
+  }
+  
+  
