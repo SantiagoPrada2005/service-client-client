@@ -19,9 +19,7 @@ export default function MainPage() {
         </div>
       </div>
       <div className={styles.mainContent}>
-        {<button type="submit" className={styles.button}>
-                Continuar
-              </button>}
+      <button type="submit" className={styles.button}>Continuar</button>
       </div>
     </div>
   );
