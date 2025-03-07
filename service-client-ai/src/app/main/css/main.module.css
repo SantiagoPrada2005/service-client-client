@@ -1,121 +1,178 @@
-/* signup.module.css */
+/* main.module.css */
 
-.container { /* AQUI ESTA EL SIDE BAR */
-    /* Ocupa el alto completo de la ventana */
-    min-height: 100vh;
-    /* Para hacer un split screen, el container debe ser un flex sin centrar horizontalmente */
-    display: flex;
-    /* Si quieres algo de padding alrededor, puedes agregarlo aquí */
-    background-color: #ffffff; /* color1 */
-  }
-  
-  .loginBox {
-    /* Quitamos márgenes muy grandes para que ocupe la pantalla completa en modo split */
-    width: 100%;
-    height: 100vh; /* Si deseas que ocupe toda la altura */
-    display: flex; 
-    /* Ya no necesitas justify-content ni align-items aquí 
-       si quieres que la imagen y el formulario se alineen en paralelo */
-    margin: 0; /* o lo ajustas a tu preferencia */
-    border-radius: 0; /* opcional, si no deseas bordes redondeados */
-  }
-  
-  /* Sección izquierda (la imagen) */
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.loginBox {
+  display: flex;
+  width: 100%;
+}
+
+/* Estilos para la sidebar desplegable */
+.sidebarContainer {
+  width: 250px;
+  background-color: #333333;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Clase para ocultar la sidebar (puedes añadirla con JavaScript) */
+.sidebarHidden {
+  transform: translateX(-250px);
+}
+
+.sidebarContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarContent h2 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #4a4a4a;
+}
+
+/* Estilos para los elementos de la sidebar */
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sidebarItem:hover {
+  background-color: #4a4a4a;
+}
+
+.icon {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.sidebarItem span {
+  font-size: 15px;
+}
+
+/* Botón para mostrar/ocultar la sidebar */
+.toggleButton {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 1001;
+  background-color: #333333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: none; /* Lo mostramos solo en móviles */
+}
+
+/* Contenido principal */
+.mainContent {
+  flex: 1;
+  margin-left: 250px; /* Mismo ancho que la sidebar */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+/* Cuando la sidebar está oculta */
+.mainContentFull {
+  margin-left: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .sidebarContainer {
+    transform: translateX(-250px); /* Oculta por defecto en móviles */
+  }
+  
+  .sidebarVisible {
+    transform: translateX(0); /* Clase para mostrar en móviles */
+  }
+  
+  .toggleButton {
+    display: block; /* Mostrar el botón en móviles */
+  }
+  
+  .mainContent {
+    margin-left: 0;
+  }
+}
 
-    flex: 1; /* Para que ocupe la mitad del contenedor */
-    background-color: #383838;
-    border-radius: 20px;
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-    max-width: 75;
-    margin: 1.5rem;
-    
-  }
-  
-  /* Sección derecha (el formulario) */
-  .loginElements {
-    flex: 1; /* Para que ocupe la otra mitad */
-    /* Un color de fondo para distinguirlo de la imagen */
-    background-color: #ffffff; /* color de fondo formulario */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra verticalmente el formulario */
-    padding: 2rem; /* Ajusta según tu gusto */
-    color: #000000; 
-  }
+.formWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-  /* Ajustamos el formulario */
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-  
-  /* Grupos de formulario (label + input) */
+.formWrapper h1 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
 
-  
-  .formGroup label {
-    font-weight: 500;
-    color: #000000; /* color5 */
-    font-size: 0.5xp;
-  }
-  
-  .formGroup {
-    margin-bottom: 0.3rem; /* Ajusta según quieras */
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem; /* Pequeño espacio entre label y input */
-  }
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-  .formGroup input {
-    padding: 0.6rem;
-    border: 0.9px solid #dbe0e8; /* border color recuadros labeltext */
-    border-radius: 5.5px;
-    font-size: 1rem;
-    background-color: #ffffffcc; /* recuadros labeltext */
-    color: #000000; /* color del texto */
-    
-  }
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
 
-  .formGroup input:focus {
-    outline: none;              /* Elimina el borde de enfoque predeterminado del navegador */
-    border: 1.59px solid #dbe0e8;  /* Cambia el color y grosor del borde a tu preferencia */
-    box-shadow: 0 0 0 1.7px #ff0000;
-  }
-  
-  /* Botón */
-  .button {
-    background-color: var(--secondary-color); /* color3 */
-    color: #ffffff; /* color del texto de registro */
-    padding: 0.75rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .button:hover {
-    background-color: #383838; /* color4 color cuando se pasa el mouse por encima*/
-  }
+.formGroup label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+}
 
-  .formWrapper {
-    width: 100%;
-    max-width: 580px;     /* Limita el ancho para que sea más estrecho */
-    margin: 0 auto;       /* Centra horizontalmente si lo necesitas */
-    padding: 2rem;        /* Espacio interno */
-    background-color: #ffff;
-    /* border: 1px solid #d0d7de;  /* Borde gris claro, estilo GitHub */
-    border-radius: 6px;
-    /* box-shadow: 0 3px 6px rgba(0,0,0,0.1);  Sombra sutil */
-  }
-  
-  /* Ejemplo: en signup.module.css */
-  .formWrapper h1 {
-    margin-bottom: 1.7rem; /* Ajusta la separación */
-    font-size: 0.5xp;       /* Ajusta el tamaño de la fuente */
-    /* Puedes añadir más propiedades, como font-weight, line-height, etc. */
-  }
+.formGroup input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.formGroup input:focus {
+  border-color: #2c3e50;
+  outline: none;
+}
+
+.button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-color: #1a2530;
+}
   
