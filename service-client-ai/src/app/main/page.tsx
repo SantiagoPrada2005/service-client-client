@@ -19,7 +19,9 @@ export default function MainPage() {
         </div>
       </div>
       <div className={styles.mainContent}>
-        {/* Aquí puedes añadir el contenido principal de la página */}
+        {<button type="submit" className={styles.button}>
+                Continuar
+              </button>}
       </div>
     </div>
   );

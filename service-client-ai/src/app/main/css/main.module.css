@@ -64,7 +64,9 @@
 }
 
 .sidebarItem:hover {
-  background-color: #4a4a4a;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #ff0000;
 }
 
 .icon {
@@ -150,7 +152,7 @@
 .formGroup label {
   margin-bottom: 8px;
   font-size: 14px;
-  color: #555;
+  color: #e30000;
 }
 
 .formGroup input {
@@ -167,6 +169,7 @@
 }
 
 .button {
+  
   background-color: #2c3e50;
   color: white;
   border: none;
@@ -174,12 +177,12 @@
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
   margin-top: 10px;
 }
 
 .button:hover {
-  background-color: #1a2530;
+  background-color: #00ff6a;
 }
 
 .sidebarList {
