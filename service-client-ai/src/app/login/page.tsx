@@ -1,6 +1,5 @@
 'use client';
 import { useState, FormEvent, ChangeEvent } from 'react';
-import styles from './css/login.module.css';
 import Link from 'next/link';
 
 // Definición de interfaces para los datos del formulario
@@ -34,16 +33,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.loginBox}>
-        <div className={styles.imageContainer}>
-        </div>
-        <div className={styles.loginElements}>
-          <div className={styles.formWrapper}>
-            <h1>Iniciar Sesión</h1>
-            <form onSubmit={handleSubmit} className={styles.form}>
-              <div className={styles.formGroup}>
-                <label htmlFor="username">Usuario</label>
+    <div className="min-h-screen flex bg-gray-50">
+      <div className="w-full h-screen flex justify-center items-center">
+        <div className="w-auto flex flex-col justify-center p-4 text-black">
+          <div className="w-[350px] mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+            <h1 className="mb-3.5 text-[24px] font-semibold text-[#24292f]">Iniciar Sesión</h1>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div className="mb-0 flex flex-col gap-2">
+                <label htmlFor="username" className="text-[14px] font-medium text-[#24292f] mb-1">Nombre de usuario</label>
                 <input
                   type="text"
                   id="username"
@@ -51,10 +48,12 @@ export default function LoginPage() {
                   value={formData.username}
                   onChange={handleChange}
                   required
+                  className="p-[10px] border border-gray-300 rounded-md text-[14px] bg-white text-gray-900 w-full focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                  placeholder="Ingresa tu nombre de usuario"
                 />
               </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="password">Contraseña</label>
+              <div className="mb-0 flex flex-col gap-2">
+                <label htmlFor="password" className="text-[14px] font-medium text-[#24292f] mb-1">Contraseña</label>
                 <input
                   type="password"
                   id="password"
@@ -62,14 +61,20 @@ export default function LoginPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
+                  className="p-[10px] border border-gray-300 rounded-md text-[14px] bg-white text-gray-900 w-full focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                  placeholder="Ingresa tu contraseña"
                 />
               </div>
-              <button type="submit" className={styles.button}>
+              <button type="submit" className="bg-[#1a1f24] hover:bg-[#24292f] text-white py-[10px] px-4 border-none rounded-md text-[14px] font-medium cursor-pointer transition-colors duration-200 mt-2">
                 Iniciar Sesión
               </button>
-              <p>¿No tienes cuenta? </p> <Link href='/signup'>Registrarse</Link>
+              <div className="flex items-center justify-center mt-4 pt-4 border-t border-gray-100 text-[14px] text-gray-600">
+                <p>¿No tienes cuenta?</p>
+                <Link href='/signup' className="ml-1 text-blue-600 hover:underline">Registrarse</Link>
+              </div>
             </form>
           </div>
+          <p className="text-center text-gray-500 text-[12px] mt-4">© 2025 "". Todos los derechos reservados.</p>
         </div>
       </div>
     </div>
