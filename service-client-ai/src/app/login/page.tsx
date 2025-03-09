@@ -1,5 +1,5 @@
 'use client';
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { useState, FormEvent, ChangeEvent, useCallback } from 'react';
 import Link from 'next/link';
 
 // Definición de interfaces para los datos del formulario
@@ -8,37 +8,44 @@ interface FormData {
   password: string;
 }
 
-export default function LoginPage() {
+const LoginPage = () => {
   const [formData, setFormData] = useState<FormData>({
     username: '',
     password: ''
   });
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
     try {
-      // Aquí irá tu lógica de autenticación
+      if (!formData.username || !formData.password) {
+        throw new Error('Por favor, completa todos los campos.');
+      }
       console.log('Datos del formulario:', formData);
+      // Aquí iría tu lógica de autenticación
     } catch (error) {
+      setError((error as Error).message);
       console.error('Error al iniciar sesión:', error);
     }
-  };
+  }, [formData]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-  };
+  }, []);
 
   return (
     <div className="min-h-screen flex bg-gray-50">
       <div className="w-full h-screen flex justify-center items-center">
         <div className="w-auto flex flex-col justify-center p-4 text-black">
-          <div className="w-[350px] mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+          <div className="w-[350px] mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
             <h1 className="mb-3.5 text-[24px] font-semibold text-[#24292f]">Iniciar Sesión</h1>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              {error && <p className="text-red-500 text-sm">{error}</p>}
               <div className="mb-0 flex flex-col gap-2">
                 <label htmlFor="username" className="text-[14px] font-medium text-[#24292f] mb-1">Nombre de usuario</label>
                 <input
@@ -48,6 +55,7 @@ export default function LoginPage() {
                   value={formData.username}
                   onChange={handleChange}
                   required
+                  aria-label="Nombre de usuario"
                   className="p-[10px] border border-gray-300 rounded-md text-[14px] bg-white text-gray-900 w-full focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="Ingresa tu nombre de usuario"
                 />
@@ -61,6 +69,7 @@ export default function LoginPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
+                  aria-label="Contraseña"
                   className="p-[10px] border border-gray-300 rounded-md text-[14px] bg-white text-gray-900 w-full focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="Ingresa tu contraseña"
                 />
@@ -74,9 +83,11 @@ export default function LoginPage() {
               </div>
             </form>
           </div>
-          <p className="text-center text-gray-500 text-[12px] mt-4">© 2025 "". Todos los derechos reservados.</p>
+          <p className="text-center text-gray-500 text-[12px] mt-4">© 2025 Tu Empresa. Todos los derechos reservados.</p>
         </div>
       </div>
     </div>
   );
 }
+
+export default LoginPage;
