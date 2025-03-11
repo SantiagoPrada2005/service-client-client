@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { query } from '../../../utils/db';
 import bcrypt from 'bcrypt';
 import { User } from '../../../utils/Types/Users';
+import type { ResultSetHeader } from 'mysql2';
 
 /**
  * POST /api/users
@@ -42,10 +43,10 @@ export async function POST(request: Request) {
     }
 
     // Verificar si el usuario ya existe
-    const existingUser = await query({
-      query: 'SELECT * FROM usuarios WHERE usuario = ? OR email = ?',
-      values: [usuario, email],
-    });
+    const existingUser = await query(
+      'SELECT * FROM usuarios WHERE usuario = ? OR email = ?',
+      [usuario, email],
+    );
 
     if (Array.isArray(existingUser) && existingUser.length > 0) {
       return NextResponse.json(
@@ -59,10 +60,10 @@ export async function POST(request: Request) {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Insertar nuevo usuario
-    const result = await query({
-      query: 'INSERT INTO usuarios (usuario, email, password) VALUES (?, ?, ?)',
-      values: [usuario, email, hashedPassword],
-    });
+    const result = await query<ResultSetHeader>(
+      'INSERT INTO usuarios (usuario, email, password) VALUES (?, ?, ?)',
+      [usuario, email, hashedPassword]
+    );
 
     return NextResponse.json(
       { 

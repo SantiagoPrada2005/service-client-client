@@ -48,7 +48,7 @@ export default function SignupPage() {
       
       console.log('Usuario registrado correctamente:', data);
       
-      router.push('/pages/login?registered=true');
+      router.push('/pages/login');
       
     } catch (error) {
       console.error('Error al registrar usuario:', error);
@@ -75,10 +75,9 @@ export default function SignupPage() {
           <Image
             src="https://carbon-media.accelerator.net/0000000kLxE/fc0a7MfuXrmg0ImC79Hewo;1920x2400.png?auto=webp"
             alt="Background"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="mix-blend-overlay object-cover"
             quality={75}
-            className="mix-blend-overlay"
           />
           <div className="absolute p-10 text-white z-10">
             <h1 className="text-5xl font-bold mb-4">
