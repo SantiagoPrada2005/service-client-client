@@ -48,7 +48,7 @@ export default function SignupPage() {
       
       console.log('Usuario registrado correctamente:', data);
       
-      router.push('/pages/login?registered=true');
+      router.push('/pages/login');
       
     } catch (error) {
       console.error('Error al registrar usuario:', error);
