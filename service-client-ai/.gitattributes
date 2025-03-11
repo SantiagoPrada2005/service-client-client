@@ -1,0 +1,6 @@
+*.tsx binary
+*.ts binary
+*.js binary
+*.jsx binary
+*.css binary
+*.json binary

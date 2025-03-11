@@ -1,8 +1,8 @@
 // app/api/users/route.ts
 import { NextResponse } from 'next/server';
-import { query} from '../../../utils/db'; // Asumiendo que tienes tu archivo db.ts configurado
+import { query } from '../../../utils/db';
 import bcrypt from 'bcrypt';
-import { User } from '../../../utils/Types/Users'; // Ajusta la ruta según la ubicación de tu interfaz
+import { User } from '../../../utils/Types/Users';
 
 /**
  * POST /api/users
@@ -22,48 +22,47 @@ import { User } from '../../../utils/Types/Users'; // Ajusta la ruta según la u
  */
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { usuario, email, password } = body;
+    const { usuario, email, password } = await request.json();
 
-    // Validar datos de entrada
-    if (!usuario || !email || !password) {
-      return NextResponse.json(
-        { error: 'Faltan campos requeridos' },
-        { status: 400 }
-      );
-    }
-
-    // Validar formato de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Validar email con expresión regular
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
-        { error: 'Formato de email inválido' },
+        { error: 'El formato del correo electrónico no es válido' },
         { status: 400 }
       );
     }
 
-    // Verificar si el usuario o email ya existen
-    const existingUser = await query<User[]>(
-      'SELECT * FROM usuarios WHERE usuario = ? OR email = ?',
-      [usuario, email]
-    );
-
-    if (existingUser.length > 0) {
+    // Validar longitud de la contraseña
+    if (password.length < 8) {
       return NextResponse.json(
-        { error: 'El usuario o email ya están registrados' },
+        { error: 'La contraseña debe tener al menos 8 caracteres' },
+        { status: 400 }
+      );
+    }
+
+    // Verificar si el usuario ya existe
+    const existingUser = await query({
+      query: 'SELECT * FROM usuarios WHERE usuario = ? OR email = ?',
+      values: [usuario, email],
+    });
+
+    if (Array.isArray(existingUser) && existingUser.length > 0) {
+      return NextResponse.json(
+        { error: 'El usuario o correo electrónico ya está registrado' },
         { status: 409 }
       );
     }
 
-    // Hashear la contraseña
-    const saltRounds = 5;
+    // Hash de la contraseña
+    const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Insertar nuevo usuario
-    const result = await query<{ insertId: number }>(
-      'INSERT INTO `serviceClientAIDB`.`usuarios` (`usuario`, `email`, `password`) VALUES (?, ?, ?)',
-      [usuario, email, hashedPassword]
-    );
+    const result = await query({
+      query: 'INSERT INTO usuarios (usuario, email, password) VALUES (?, ?, ?)',
+      values: [usuario, email, hashedPassword],
+    });
 
     return NextResponse.json(
       { 
