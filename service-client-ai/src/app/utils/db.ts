@@ -1,3 +1,4 @@
+import { get } from 'http';
 import mysql from 'mysql2/promise';
 
 // Configuración de la conexión
@@ -12,13 +13,19 @@ const dbConfig = {
   queueLimit: 0
 };
 
-// Pool de conexiones
-const pool = mysql.createPool(dbConfig);
+let poolConn = null;
+
+function getPool(){
+  if(!poolConn){
+    console.log('Creando pool de conexiones');
+    poolConn = mysql.createPool(dbConfig);
+  }return poolConn;
+}
 
 // Función para ejecutar consultas
 export async function query<T>(sql: string, params: any[] = []): Promise<T> {
   try {
-    const [results] = await pool.execute(sql, params);
+    const [results] = await getPool().execute(sql, params);
     return results as T;
   } catch (error) {
     console.error('Error en la consulta SQL:', error);
@@ -29,7 +36,7 @@ export async function query<T>(sql: string, params: any[] = []): Promise<T> {
 // Función para probar la conexión
 export async function testConnection() {
   try {
-    const connection = await pool.getConnection();
+    const connection = await getPool().getConnection();
     console.log('Conexión a la base de datos establecida');
     connection.release();
     return true;
@@ -63,7 +70,7 @@ export async function initDatabase() {
 // Función para obtener una conexión individual
 export async function getConnection() {
   try {
-    const connection = await pool.getConnection();
+    const connection = await getPool().getConnection();
     return connection;
   } catch (error) {
     console.error('Error al obtener conexión:', error);
@@ -75,7 +82,7 @@ export async function getConnection() {
 export async function transaction<T>(
   callback: (connection: mysql.PoolConnection) => Promise<T>
 ): Promise<T> {
-  const connection = await pool.getConnection();
+  const connection = await getPool().getConnection();
   
   try {
     await connection.beginTransaction();
@@ -94,7 +101,7 @@ export async function transaction<T>(
 // Función para cerrar el pool (útil al cerrar la aplicación)
 export async function closeDatabase(): Promise<void> {
   try {
-    await pool.end();
+    await getPool().end();
     console.log('Conexión a la base de datos cerrada correctamente');
   } catch (error) {
     console.error('Error al cerrar la base de datos:', error);
