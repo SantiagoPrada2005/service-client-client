@@ -1,5 +1,6 @@
-import { get } from 'http';
 import mysql from 'mysql2/promise';
+import path from 'path';
+import fs from 'fs';
 
 // Configuración de la conexión
 const dbConfig = {
@@ -10,16 +11,22 @@ const dbConfig = {
   port: parseInt(process.env.DB_PORT || '3306'),
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  ssl: {
+    ca: fs.readFileSync(path.join(process.cwd(), 'SSL', 'server-ca.pem')),
+    key: fs.readFileSync(path.join(process.cwd(), 'SSL', 'client-key.pem')),
+    cert: fs.readFileSync(path.join(process.cwd(), 'SSL', 'client-cert.pem'))
+  }
 };
 
-let poolConn = null;
+let poolConn: mysql.Pool | null = null;
 
-function getPool(){
+function getPool(): mysql.Pool {
   if(!poolConn){
     console.log('Creando pool de conexiones');
     poolConn = mysql.createPool(dbConfig);
-  }return poolConn;
+  }
+  return poolConn;
 }
 
 // Función para ejecutar consultas
@@ -34,7 +41,7 @@ export async function query<T>(sql: string, params: any[] = []): Promise<T> {
 }
 
 // Función para probar la conexión
-export async function testConnection() {
+export async function testConnection(): Promise<boolean> {
   try {
     const connection = await getPool().getConnection();
     console.log('Conexión a la base de datos establecida');
@@ -47,7 +54,7 @@ export async function testConnection() {
 }
 
 // Crear tabla de usuarios si no existe
-export async function initDatabase() {
+export async function initDatabase(): Promise<void> {
   const createTableSQL = `
     CREATE TABLE IF NOT EXISTS usuarios (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -68,7 +75,7 @@ export async function initDatabase() {
 }
 
 // Función para obtener una conexión individual
-export async function getConnection() {
+export async function getConnection(): Promise<mysql.PoolConnection> {
   try {
     const connection = await getPool().getConnection();
     return connection;
@@ -101,19 +108,12 @@ export async function transaction<T>(
 // Función para cerrar el pool (útil al cerrar la aplicación)
 export async function closeDatabase(): Promise<void> {
   try {
-    await getPool().end();
-    console.log('Conexión a la base de datos cerrada correctamente');
+    if (poolConn) {
+      await poolConn.end();
+      console.log('Conexión a la base de datos cerrada correctamente');
+    }
   } catch (error) {
     console.error('Error al cerrar la base de datos:', error);
     throw error;
   }
 }
-
-exports = {
-  query,
-  testConnection,
-  initDatabase,
-  getConnection,
-  transaction,
-  closeDatabase
-};
