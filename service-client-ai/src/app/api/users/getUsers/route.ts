@@ -4,7 +4,7 @@ import {User} from '../../../utils/Types/Users';
 
 export async function GET() {
     try {
-        const usuarios = await query<User[]>(`SELECT * FROM usuarios`);
+        const usuarios = await query<User[]>(`SELECT * FROM users`);
         
         return NextResponse.json(
             { 

@@ -35,7 +35,7 @@ export async function POST(request: Request) {
 
     // Buscar el usuario en la base de datos
     const users = await query<User[]>(
-      'SELECT * FROM usuarios WHERE usuario = ?',
+      'SELECT * FROM users WHERE username = ?',
       [username]
     );
 

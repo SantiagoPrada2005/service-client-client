@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 
     // Verificar si el usuario ya existe
     const existingUser = await query(
-      'SELECT * FROM usuarios WHERE usuario = ? OR email = ?',
+      'SELECT * FROM users WHERE username = ? OR email = ?',
       [usuario, email],
     );
 
@@ -61,8 +61,8 @@ export async function POST(request: Request) {
 
     // Insertar nuevo usuario
     const result = await query<ResultSetHeader>(
-      'INSERT INTO usuarios (usuario, email, password) VALUES (?, ?, ?)',
-      [usuario, email, hashedPassword]
+      'INSERT INTO users (username, email, password,organization_id ) VALUES (?, ?, ?,?)',
+      [usuario, email, hashedPassword, 1]
     );
 
     return NextResponse.json(

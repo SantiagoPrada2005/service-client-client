@@ -8,7 +8,7 @@ export async function GET(
 ) {
     try {
         const {id} = await params;
-        const usuarios = await query<[User]>(`SELECT * FROM usuarios WHERE id = ?`, [id]);
+        const usuarios = await query<[User]>(`SELECT * FROM users WHERE id = ?`, [id]);
         
         return NextResponse.json(
             { 
