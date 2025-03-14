@@ -9,8 +9,11 @@ export default function PricingPage() {
       {/* Header */}
       <header className="fixed w-full top-0 z-50 bg-[#030712]/80 backdrop-blur-sm border-b border-slate-800">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center">
+          <div className="flex items-center gap-7">
             <h1 className="text-2xl font-bold text-white">{APP_NAME}</h1>
+            <Link href="/" className="text-sm text-slate-300 hover:text-white transition-all duration-500 ease-out">
+              Inicio
+            </Link>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/" className="text-slate-300 hover:text-white transition-all duration-500 ease-out">
