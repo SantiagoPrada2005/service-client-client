@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { APP_NAME } from '../../utils/constants';
 
 export default function PricingPage() {
   return (
@@ -9,7 +10,7 @@ export default function PricingPage() {
       <header className="fixed w-full top-0 z-50 bg-[#030712]/80 backdrop-blur-sm border-b border-slate-800">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-white">fTSQUE</h1>
+            <h1 className="text-2xl font-bold text-white">{APP_NAME}</h1>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/" className="text-slate-300 hover:text-white transition-all duration-500 ease-out">
@@ -38,7 +39,7 @@ export default function PricingPage() {
               Planes y <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Precios</span>
             </h2>
             <p className="text-xl text-slate-300 mb-8 relative">
-              Elige el plan que mejor se adapte a tus necesidades y comienza a potenciar tu experiencia con fTSQUE.
+              Elige el plan que mejor se adapte a tus necesidades y comienza a potenciar tu experiencia con {APP_NAME}.
             </p>
           </div>
 
@@ -207,7 +208,7 @@ export default function PricingPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5"></div>
               <div className="relative">
                 <h3 className="text-3xl font-bold text-white mb-4">
-                  ¿Listo para potenciar tu experiencia con <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">fTSQUE</span>?
+                  ¿Listo para potenciar tu experiencia con <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">{APP_NAME}</span>?
                 </h3>
                 <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
                   Únete a miles de profesionales que ya están aprovechando el poder de nuestra plataforma.
@@ -235,7 +236,7 @@ export default function PricingPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h3 className="text-xl font-bold text-white mb-4">fTSQUE</h3>
+              <h3 className="text-xl font-bold text-white mb-4">{APP_NAME}</h3>
               <p className="text-slate-400 mb-4">Potenciando tu experiencia digital con inteligencia artificial adaptativa.</p>
               <div className="flex space-x-4">
                 <a href="#" className="text-slate-400 hover:text-white transition-colors duration-300">
@@ -285,7 +286,7 @@ export default function PricingPage() {
           </div>
           
           <div className="border-t border-slate-800 pt-8">
-            <p className="text-slate-400 text-sm text-center">&copy; {new Date().getFullYear()} fTSQUE. Todos los derechos reservados.</p>
+            <p className="text-slate-400 text-sm text-center">&copy; {new Date().getFullYear()} {APP_NAME}. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

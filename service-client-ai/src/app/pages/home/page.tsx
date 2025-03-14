@@ -9,7 +9,7 @@ export default function MainPage() {
       {/* Removed macOS-style window controls and App Title as requested */}
 
       {/* Sidebar */}
-      <div className="fixed left-5 top-12 z-40">
+      <div className="fixed left-5 top-0 h-screen flex items-center z-40">
         <div className="w-[60px] bg-[#2a2a2a]/80 backdrop-blur-xl text-white rounded-xl shadow-xl border border-[#3a3a3a] h-[calc(100vh-80px)] flex flex-col items-center py-6">
           <div className="space-y-8 flex flex-col items-center">
             <button className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-[#3a3a3a] transition-all duration-200">
@@ -34,35 +34,30 @@ export default function MainPage() {
               </svg>
             </button>
           </div>
+          
+          {/* Profile Image - Added at the bottom */}
+          <div className="mt-auto flex justify-center items-center w-full pb-6">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 via-purple-500 to-pink-500 flex items-center justify-center overflow-hidden border-2 border-[#3a3a3a] hover:border-[#707070] transition-all duration-300 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 ml-[80px] p-8 pt-12">
-        <div className="bg-[#2a2a2a]/80 backdrop-blur-xl rounded-xl border border-[#3a3a3a] shadow-xl h-[calc(100vh-100px)] overflow-hidden">
-          {/* Tabs */}
-          <div className="flex border-b border-[#3a3a3a] px-4">
-            <button 
-              onClick={() => setActiveTab('builder')} 
-              className={`px-4 py-3 text-sm font-medium ${activeTab === 'builder' ? 'text-white border-b-2 border-indigo-500' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              Builder
-            </button>
-            <button 
-              onClick={() => setActiveTab('chat')} 
-              className={`px-4 py-3 text-sm font-medium ${activeTab === 'chat' ? 'text-white border-b-2 border-indigo-500' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              Chat
-            </button>
-          </div>
+      <div className="flex-1 ml-[80px] p-8 flex items-center">
+        <div className="bg-[#2a2a2a]/80 backdrop-blur-xl rounded-xl border border-[#3a3a3a] shadow-xl h-[calc(100vh-80px)] overflow-hidden w-full">
+          {/**/}
 
           {/* Content Area */}
           <div className="p-6">
             {activeTab === 'builder' && (
               <div>
                 <div className="mb-8">
-                  <h2 className="text-2xl font-semibold mb-2">Trae-Builder Mode</h2>
-                  <p className="text-gray-400 text-sm">Easily build a project from scratch. In Builder mode, any changes to code files will be automatically saved.</p>
+                  <h2 className="text-2xl font-semibold mb-2">TEXT</h2>
+                  <p className="text-gray-400 text-sm">TEXT</p>
                 </div>
 
                 {/* Tip Box */}
@@ -74,7 +69,7 @@ export default function MainPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-300">Uploading design drafts or reference images can enhance front-end development efficiency.</p>
+                      <p className="text-sm text-gray-300">TEXT</p>
                     </div>
                     <button className="ml-auto text-gray-500 hover:text-gray-400">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -94,11 +89,11 @@ export default function MainPage() {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-sm font-medium">Generate a todolist html and preview</h3>
+                        <h3 className="text-sm font-medium">TEST</h3>
                       </div>
                     </div>
                     <div className="text-xs text-gray-500">
-                      Claude-3.5-Sonnet
+                      Gemini 2 Flash
                     </div>
                   </div>
                 </div>

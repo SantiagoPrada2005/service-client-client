@@ -3,6 +3,7 @@ import { useState, FormEvent, ChangeEvent, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import { APP_NAME } from '../../utils/constants';
 
 interface FormData {
   username: string;
@@ -76,12 +77,12 @@ export default function LoginPage() {
       <div className="w-full flex flex-row">
         {/* Left Side - Image */}
         <div className="w-1/2 relative rounded-xl overflow-hidden m-4">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 via-purple-500/30 to-pink-500/30 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-sm"></div>
           <Image
             src="https://carbon-media.accelerator.net/0000000kLxE/fc0a7MfuXrmg0ImC79Hewo;1920x2400.png?auto=webp"
             alt="Background"
             fill
-            className="object-cover"
+            className="object-cover animate-fade-in"
             quality={100}
           />
 
@@ -89,7 +90,7 @@ export default function LoginPage() {
           <div className="absolute bg-[#030712]/80 backdrop-blur-sm border-b border-slate-800">
             <div className="absolute p-10 text-white z-10">
               <h1 className="text-5xl font-bold mb-4 animate-fade-in">
-                Accede a <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">fTSQUE</span>
+                Accede a <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">{APP_NAME}</span>
               </h1>
               <p className="text-xl text-white/80 animate-fade-in">
                 Conecta con nuestra plataforma inteligente y potencia tu experiencia digital.
@@ -104,7 +105,7 @@ export default function LoginPage() {
           <div className="w-[400px] py-8 relative">
             <div className="mb-8 animate-fade-in">
               <h2 className="text-3xl font-bold text-white mb-2">Iniciar Sesión</h2>
-              <p className="text-slate-400">Accede a tu cuenta de fTSQUE</p>
+              <p className="text-slate-400">Accede a tu cuenta de {APP_NAME}</p>
             </div>
 
             {error && (

@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { APP_NAME } from './utils/constants';
 
 export default function MainPage() {
   return (
@@ -8,16 +9,18 @@ export default function MainPage() {
       {/* Header */}
       <header className="fixed w-full top-0 z-50 bg-[#030712]/80 backdrop-blur-sm border-b border-slate-800">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-white">fTSQUE</h1>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/pages/pricing" className="text-slate-300 hover:text-white transition-all duration-500 ease-out">
+          <div className="flex items-center gap-7">
+            <h1 className="text-2xl font-bold text-white">{APP_NAME}</h1>
+            <Link href="/pages/pricing" className="text-sm text-slate-300 hover:text-white transition-all duration-500 ease-out">
               Pricing
             </Link>
+          </div>
+          
+          <div className="flex items-center gap-4">
 
-            <Link href="/pages/login" className="text-slate-300 hover:text-white transition-all duration-500 ease-out">
-              Log in
+            <Link href="/pages/login" 
+            className="bg-slate-800/50 text-white px-4 py-2 rounded-md font-medium transition-all duration-500 ease-out hover:bg-slate-700/50 border border-slate-700 hover:border-slate-600 hover:scale-105">
+            Log in
             </Link>
 
             <Link href="/pages/signup" 
@@ -37,10 +40,10 @@ export default function MainPage() {
           <div className="text-center max-w-4xl mx-auto py-20">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[500px] w-full bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-transparent blur-3xl"></div>
             <h2 className="text-7xl font-bold text-white mb-6 relative">
-              Ship Faster with <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">fTSQUE</span>
+              Ship Faster with <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">{APP_NAME}</span>
             </h2>
             <p className="text-xl text-slate-300 mb-8 relative">
-              fTSQUE es una plataforma adaptativa que transforma tu forma de trabajar,
+            {APP_NAME} es una plataforma adaptativa que transforma tu forma de trabajar,
               colaborando contigo para que seas más rápido y eficiente.
             </p>
             <div className="flex justify-center gap-4 relative">
@@ -181,7 +184,7 @@ export default function MainPage() {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
-                  <p className="text-slate-300 mb-4">fTSQUE ha revolucionado nuestra forma de trabajar. La eficiencia ha aumentado significativamente.</p>
+                  <p className="text-slate-300 mb-4">{APP_NAME} ha revolucionado nuestra forma de trabajar. La eficiencia ha aumentado significativamente.</p>
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">JD</div>
                     <div className="ml-3">
@@ -218,7 +221,7 @@ export default function MainPage() {
           
             <div className="max-w-4xl mx-auto text-center px-4">
               <h2 className="text-4xl font-bold text-white mb-6">¿Listo para transformar tu forma de trabajar?</h2>
-              <p className="text-xl text-slate-300 mb-8">Únete a miles de profesionales que ya están aprovechando el poder de fTSQUE</p>
+              <p className="text-xl text-slate-300 mb-8">Únete a miles de profesionales que ya están aprovechando el poder de {APP_NAME}</p>
               <Link href="/pages/signup" 
                 className="group relative inline-flex items-center gap-2 px-8 py-4 text-lg">
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md opacity-0 blur-md transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-110"></div>
@@ -238,7 +241,7 @@ export default function MainPage() {
                 <div className="inline-block mb-4 px-4 py-1 bg-red-500/10 text-red-400 text-sm font-medium rounded-full"># Multimodalidad</div>
                 <h2 className="text-4xl font-bold text-white mb-6">Sube imágenes para clarificar requerimientos</h2>
                 <p className="text-lg text-slate-400 leading-relaxed">
-                  Con capacidades multimodales avanzadas, fTSQUE entiende tus subidas de imágenes con precisión, 
+                  Con capacidades multimodales avanzadas, {APP_NAME} entiende tus subidas de imágenes con precisión, 
                   agilizando la colaboración y aumentando la eficiencia.
                 </p>
               </div>
@@ -265,7 +268,7 @@ export default function MainPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h3 className="text-xl font-bold text-white mb-4">fTSQUE</h3>
+              <h3 className="text-xl font-bold text-white mb-4">{APP_NAME}</h3>
               <p className="text-slate-400 mb-4">Potenciando tu experiencia digital con inteligencia artificial adaptativa.</p>
               <div className="flex space-x-4">
                 <a href="#" className="text-slate-400 hover:text-white transition-colors duration-300">
@@ -315,7 +318,7 @@ export default function MainPage() {
           </div>
           
           <div className="border-t border-slate-800 pt-8">
-            <p className="text-slate-400 text-sm text-center">&copy; {new Date().getFullYear()} fTSQUE. Todos los derechos reservados.</p>
+            <p className="text-slate-400 text-sm text-center">&copy; {new Date().getFullYear()} {APP_NAME}. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
