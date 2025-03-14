@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { query, } from '../../../../utils/db';
-import { User } from '../../../../utils/Types/Users';
+import { User } from '../../../../utils/Types/User';
 
 export async function GET(
     request: NextRequest,

@@ -1,7 +1,7 @@
 // app/api/auth/login/route.ts
 import { NextResponse } from 'next/server';
 import { query } from '../../../../utils/db';
-import { User } from '../../../../utils/Types/Users';
+import { User } from '../../../../utils/Types/User';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
     const token = jwt.sign(
       { 
         userId: user.id,
-        username: user.usuario,
+        username: user.username,
         email: user.email
       },
       process.env.JWT_SECRET || 'your-secret-key', // Usa una variable de entorno en producción
