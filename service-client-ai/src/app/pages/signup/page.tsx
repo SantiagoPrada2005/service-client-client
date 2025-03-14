@@ -67,44 +67,49 @@ export default function SignupPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex bg-[#030712] overflow-hidden">
+    <div className="min-h-screen flex bg-[#000000] overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-transparent"></div>
       <div className="w-full flex flex-row">
         {/* Left Side - Image */}
-        <div className="w-1/2 relative bg-cover bg-center bg-no-repeat">
+        <div className="w-1/2 relative rounded-xl overflow-hidden m-4">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 via-purple-500/30 to-pink-500/30 backdrop-blur-sm"></div>
           <Image
             src="https://carbon-media.accelerator.net/0000000kLxE/fc0a7MfuXrmg0ImC79Hewo;1920x2400.png?auto=webp"
             alt="Background"
             fill
-            className="mix-blend-overlay object-cover"
-            quality={75}
+            className="object-cover"
+            quality={100}
           />
-          <div className="absolute p-10 text-white z-10">
-            <h1 className="text-5xl font-bold mb-4">
-              Únete a <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">fTSQUE</span>
-            </h1>
-            <p className="text-xl text-white/80">
-              Descubre el poder de la IA adaptativa y la colaboración en tiempo real.
-            </p>
+
+          {/* Content Overlay */}
+          <div className="absolute bg-[#030712]/80 backdrop-blur-sm border-b border-slate-800">
+            <div className="absolute p-10 text-white z-10">
+              <h1 className="text-5xl font-bold mb-4 animate-fade-in">
+                Únete a <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">fTSQUE</span>
+              </h1>
+              <p className="text-xl text-white/80 animate-fade-in">
+                Descubre el poder de la IA adaptativa y la colaboración en tiempo real.
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Right Side - Form */}
-        <div className="w-1/2 bg-[#030712] flex items-center justify-center relative">
+        <div className="w-1/2 bg-[#000000] flex items-center justify-center relative">
           <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-transparent"></div>
           <div className="w-[400px] py-8 relative">
-            <div className="mb-8">
+            <div className="mb-8 animate-fade-in">
               <h2 className="text-3xl font-bold text-white mb-2">Crea tu cuenta</h2>
               <p className="text-slate-400">Comienza tu viaje con fTSQUE</p>
             </div>
 
             {error && (
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg animate-fade-in">
                 <p className="text-red-400 text-sm">{error}</p>
               </div>
             )}
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
               <div>
                 <label htmlFor="username" className="block text-sm font-medium text-slate-300 mb-2">
                   Nombre de usuario
@@ -122,7 +127,7 @@ export default function SignupPage() {
                 />
               </div>
 
-              <div>
+              <div className="animate-fade-in">
                 <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
                   Correo electrónico
                 </label>
@@ -139,7 +144,7 @@ export default function SignupPage() {
                 />
               </div>
 
-              <div>
+              <div className="animate-fade-in">
                 <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
                   Contraseña
                 </label>
@@ -160,7 +165,7 @@ export default function SignupPage() {
               
               <button 
                 type="submit" 
-                className="group relative w-full"
+                className="group relative w-full animate-fade-in"
                 disabled={loading}
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
@@ -169,7 +174,7 @@ export default function SignupPage() {
                 </div>
               </button>
 
-              <div className="text-center text-slate-400">
+              <div className="text-center text-slate-400 animate-fade-in">
                 ¿Ya tienes una cuenta? {' '}
                 <Link 
                   href="/pages/login" 

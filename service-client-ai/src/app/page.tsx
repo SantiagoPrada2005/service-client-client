@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const MainPage = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#030712]">
+    <div className="min-h-screen flex flex-col bg-[#000000]">
       {/* Header */}
       <header className="fixed w-full top-0 z-50 bg-[#030712]/80 backdrop-blur-sm border-b border-slate-800">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -12,9 +12,14 @@ const MainPage = () => {
             <h1 className="text-2xl font-bold text-white">fTSQUE</h1>
           </div>
           <div className="flex items-center gap-4">
+            <Link href="/pages/home" className="text-slate-300 hover:text-white transition-all duration-500 ease-out">
+              Pricing
+            </Link>
+
             <Link href="/pages/login" className="text-slate-300 hover:text-white transition-all duration-500 ease-out">
               Log in
             </Link>
+
             <Link href="/pages/signup" 
               className="group relative inline-flex items-center gap-2 px-4 py-2">
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md opacity-0 blur-md transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-110"></div>
