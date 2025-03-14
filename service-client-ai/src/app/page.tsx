@@ -181,7 +181,7 @@ const MainPage = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
-                  <p className="text-slate-300 mb-4">"fTSQUE ha revolucionado nuestra forma de trabajar. La eficiencia ha aumentado significativamente."</p>
+                  <p className="text-slate-300 mb-4">fTSQUE ha revolucionado nuestra forma de trabajar. La eficiencia ha aumentado significativamente.</p>
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold">JD</div>
                     <div className="ml-3">
@@ -191,7 +191,7 @@ const MainPage = () => {
                   </div>
                 </div>
                 <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
-                  <p className="text-slate-300 mb-4">"La integración con IA es impresionante. Ha mejorado nuestra productividad en un 200%."</p>
+                  <p className="text-slate-300 mb-4">La integración con IA es impresionante. Ha mejorado nuestra productividad en un 200%.</p>
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">MC</div>
                     <div className="ml-3">
@@ -201,7 +201,7 @@ const MainPage = () => {
                   </div>
                 </div>
                 <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
-                  <p className="text-slate-300 mb-4">"El soporte es excepcional. Siempre están disponibles para ayudar con cualquier consulta."</p>
+                  <p className="text-slate-300 mb-4">El soporte es excepcional. Siempre están disponibles para ayudar con cualquier consulta.</p>
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center text-white font-bold">AS</div>
                     <div className="ml-3">
