@@ -27,7 +27,7 @@ export default function SignupPage() {
     
     try {
       const apiData = {
-        usuario: formData.username,
+        username: formData.username,
         email: formData.email,
         password: formData.password
       };

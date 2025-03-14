@@ -2,8 +2,9 @@
 import { NextResponse } from 'next/server';
 import { query } from '../../../utils/db';
 import bcrypt from 'bcrypt';
-import { User } from '../../../utils/Types/Users';
+import { User } from '../../../utils/Types/User';
 import type { ResultSetHeader } from 'mysql2';
+import {formatDateToMySQLTimestamp} from '../../../utils/formatearFecha';
 
 /**
  * POST /api/users
@@ -11,7 +12,7 @@ import type { ResultSetHeader } from 'mysql2';
  * Crea un nuevo usuario en la base de datos
  * 
  * @body {object} userData - Datos del usuario a crear
- * @body {string} userData.usuario - Nombre de usuario
+ * @body {string} userData.username - Nombre de usuario
  * @body {string} userData.email - Correo electrónico
  * @body {string} userData.password - Contraseña (será hasheada)
  * 
@@ -23,7 +24,7 @@ import type { ResultSetHeader } from 'mysql2';
  */
 export async function POST(request: Request) {
   try {
-    const { usuario, email, password } = await request.json();
+    const { username, email, password } = await request.json();
 
     // Validar email con expresión regular
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
     // Verificar si el usuario ya existe
     const existingUser = await query(
       'SELECT * FROM users WHERE username = ? OR email = ?',
-      [usuario, email],
+      [username, email],
     );
 
     if (Array.isArray(existingUser) && existingUser.length > 0) {
@@ -59,10 +60,14 @@ export async function POST(request: Request) {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+    //formateo de fecha
+    const createdAt = formatDateToMySQLTimestamp(new Date());
+    const updatedAt = formatDateToMySQLTimestamp(new Date());
+
     // Insertar nuevo usuario
     const result = await query<ResultSetHeader>(
-      'INSERT INTO users (username, email, password,organization_id ) VALUES (?, ?, ?,?)',
-      [usuario, email, hashedPassword, 1]
+      'INSERT INTO users (username, email, password,organization_id,created_at,updated_at) VALUES (?, ?, ?,?,?,?)',
+      [username, email, hashedPassword, 1, createdAt, updatedAt]
     );
 
     return NextResponse.json(
