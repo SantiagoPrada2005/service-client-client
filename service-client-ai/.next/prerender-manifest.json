@@ -54,7 +54,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/pages/login": {
+    "/pages/pricing": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -67,8 +67,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/pages/login",
-      "dataRoute": "/pages/login.rsc",
+      "srcRoute": "/pages/pricing",
+      "dataRoute": "/pages/pricing.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -102,7 +102,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/pages/pricing": {
+    "/pages/login": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -115,8 +115,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/pages/pricing",
-      "dataRoute": "/pages/pricing.rsc",
+      "srcRoute": "/pages/login",
+      "dataRoute": "/pages/login.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -154,8 +154,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "3b45de1011d5287712531443dd70eded",
-    "previewModeSigningKey": "4bfe3fc52417c1775d2194cf88144a3bc7a8e60dcfb3cd29a897c29f828d22a8",
-    "previewModeEncryptionKey": "b7db40d91a4be9cce684e5fe35bf50a33a82f67ed5e42d7020f89ae17666e3c6"
+    "previewModeId": "312f8aae5e9e11388c27e7b96ed2e5c8",
+    "previewModeSigningKey": "b21a820ef0917f2b3b5cefce355dd5c311c143d23fd454a9c46aaa2b2886e380",
+    "previewModeEncryptionKey": "57055079c7c1b75c17d5c9ef03ef2b53e97e2a9322d01813cd00883ee928a5e0"
   }
 }

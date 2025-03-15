@@ -13,9 +13,9 @@ const dbConfig = {
   connectionLimit: 10,
   queueLimit: 0,
   ssl: {
-    ca: fs.readFileSync(path.join(process.cwd(), 'SSL', 'server-ca.pem')) || fs.readFileSync(path.join(process.cwd(), '/etc/secrets/server-ca.pem')),
-    key: fs.readFileSync(path.join(process.cwd(), 'SSL', 'client-key.pem')) || fs.readFileSync(path.join(process.cwd(), '/etc/secrets/client-key.pem')),
-    cert: fs.readFileSync(path.join(process.cwd(), 'SSL', 'client-cert.pem')) || fs.readFileSync(path.join(process.cwd(), '/etc/secrets/client-cert.pem'))
+    ca: fs.readFileSync(path.join(process.cwd(), '/etc/secrets/server-ca.pem')),
+    key: fs.readFileSync(path.join(process.cwd(), '/etc/secrets/client-key.pem')),
+    cert: fs.readFileSync(path.join(process.cwd(), '/etc/secrets/client-cert.pem'))
   }
 };
 
