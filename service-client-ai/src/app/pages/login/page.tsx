@@ -1,5 +1,5 @@
 'use client';
-import { useState, FormEvent, ChangeEvent, useCallback } from 'react';
+import { useState, FormEvent, ChangeEvent, useCallback, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
@@ -10,7 +10,8 @@ interface FormData {
   password: string;
 }
 
-export default function LoginPage() {
+// Componente que utiliza useSearchParams
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const justRegistered = searchParams.get('registered') === 'true';
@@ -72,6 +73,90 @@ export default function LoginPage() {
   }, []);
 
   return (
+    <div className="w-1/2 bg-[#000000] flex items-center justify-center relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-transparent"></div>
+      <div className="w-[400px] py-8 relative">
+        <div className="mb-8 animate-fade-in">
+          <h2 className="text-3xl font-bold text-white mb-2">Iniciar Sesión</h2>
+          <p className="text-slate-400">Accede a tu cuenta de {APP_NAME}</p>
+        </div>
+
+        {error && (
+          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg animate-fade-in">
+            <p className="text-red-400 text-sm">{error}</p>
+          </div>
+        )}
+
+        {success && (
+          <div className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-lg animate-fade-in">
+            <p className="text-emerald-400 text-sm">{success}</p>
+          </div>
+        )}
+        
+        <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
+          <div>
+            <label htmlFor="username" className="block text-sm font-medium text-slate-300 mb-2">
+              Nombre de usuario
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors duration-300"
+              placeholder="Tu nombre de usuario"
+              disabled={loading}
+            />
+          </div>
+
+          <div className="animate-fade-in">
+            <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors duration-300"
+              placeholder="Tu contraseña"
+              disabled={loading}
+            />
+          </div>
+          
+          <button 
+            type="submit" 
+            className="group relative w-full animate-fade-in"
+            disabled={loading}
+          >
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
+            <div className="relative w-full px-6 py-3 bg-[#030712] rounded-lg border border-slate-800 text-white font-medium group-hover:border-slate-700 transition duration-500">
+              {loading ? 'Procesando...' : 'Iniciar Sesión'}
+            </div>
+          </button>
+
+          <div className="text-center text-slate-400 animate-fade-in">
+            ¿No tienes una cuenta? {' '}
+            <Link 
+              href="/pages/signup" 
+              className="text-white hover:text-indigo-400 transition-colors duration-300"
+            >
+              Regístrate
+            </Link>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+// Componente principal que envuelve el formulario en un Suspense
+export default function LoginPage() {
+  return (
     <div className="min-h-screen flex bg-[#000000] overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-transparent"></div>
       <div className="w-full flex flex-row">
@@ -100,84 +185,9 @@ export default function LoginPage() {
         </div>
 
         {/* Right Side - Form */}
-        <div className="w-1/2 bg-[#000000] flex items-center justify-center relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-transparent"></div>
-          <div className="w-[400px] py-8 relative">
-            <div className="mb-8 animate-fade-in">
-              <h2 className="text-3xl font-bold text-white mb-2">Iniciar Sesión</h2>
-              <p className="text-slate-400">Accede a tu cuenta de {APP_NAME}</p>
-            </div>
-
-            {error && (
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg animate-fade-in">
-                <p className="text-red-400 text-sm">{error}</p>
-              </div>
-            )}
-
-            {success && (
-              <div className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-lg animate-fade-in">
-                <p className="text-emerald-400 text-sm">{success}</p>
-              </div>
-            )}
-            
-            <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
-              <div>
-                <label htmlFor="username" className="block text-sm font-medium text-slate-300 mb-2">
-                  Nombre de usuario
-                </label>
-                <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors duration-300"
-                  placeholder="Tu nombre de usuario"
-                  disabled={loading}
-                />
-              </div>
-
-              <div className="animate-fade-in">
-                <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
-                  Contraseña
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors duration-300"
-                  placeholder="Tu contraseña"
-                  disabled={loading}
-                />
-              </div>
-              
-              <button 
-                type="submit" 
-                className="group relative w-full animate-fade-in"
-                disabled={loading}
-              >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
-                <div className="relative w-full px-6 py-3 bg-[#030712] rounded-lg border border-slate-800 text-white font-medium group-hover:border-slate-700 transition duration-500">
-                  {loading ? 'Procesando...' : 'Iniciar Sesión'}
-                </div>
-              </button>
-
-              <div className="text-center text-slate-400 animate-fade-in">
-                ¿No tienes una cuenta? {' '}
-                <Link 
-                  href="/pages/signup" 
-                  className="text-white hover:text-indigo-400 transition-colors duration-300"
-                >
-                  Regístrate
-                </Link>
-              </div>
-            </form>
-          </div>
-        </div>
+        <Suspense fallback={<div className="w-1/2 flex items-center justify-center"><div className="text-white">Cargando...</div></div>}>
+          <LoginForm />
+        </Suspense>
       </div>
     </div>
   );

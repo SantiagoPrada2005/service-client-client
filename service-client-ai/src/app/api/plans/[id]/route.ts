@@ -1,8 +1,12 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { query } from '../../../utils/db';
 import {Plan} from '../../../utils/Types/Plan';
-import type { ResultSetHeader } from 'mysql2/promise'; // Importar tipo MySQL
 
+interface RouteContext {
+    params: {
+      id: string;
+    };
+}
 
 /**
  * @desc    Obtiene un plan específico por su ID
@@ -16,12 +20,12 @@ import type { ResultSetHeader } from 'mysql2/promise'; // Importar tipo MySQL
  */
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: RouteContext
 ) {
     try {
-        const {id} = await params;
+        const {id} = context.params;
         // Ejemplo de mejora: Validación de parámetros
-        if (!Number.isInteger(Number(id))) {
+        if (!/^\d+$/.test(id)) {
             return NextResponse.json(
               { success: false, message: 'ID inválido' },
               { status: 400 }

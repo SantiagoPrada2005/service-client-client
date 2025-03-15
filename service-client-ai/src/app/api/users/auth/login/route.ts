@@ -1,5 +1,5 @@
 // app/api/auth/login/route.ts
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { query } from '../../../../utils/db';
 import { User } from '../../../../utils/Types/User';
 import bcrypt from 'bcrypt';
@@ -20,7 +20,7 @@ import jwt from 'jsonwebtoken';
  * @returns {number} 401 - Credenciales inválidas
  * @returns {number} 500 - Error del servidor
  */
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { username, password } = body;
