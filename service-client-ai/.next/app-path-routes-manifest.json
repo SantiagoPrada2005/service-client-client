@@ -1,0 +1,16 @@
+{
+  "/api/ping/route": "/api/ping",
+  "/api/plans/[id]/route": "/api/plans/[id]",
+  "/api/plans/route": "/api/plans",
+  "/_not-found/page": "/_not-found",
+  "/api/users/createUsers/route": "/api/users/createUsers",
+  "/api/users/auth/login/route": "/api/users/auth/login",
+  "/api/users/getUsers/[id]/route": "/api/users/getUsers/[id]",
+  "/api/users/getUsers/route": "/api/users/getUsers",
+  "/favicon.ico/route": "/favicon.ico",
+  "/pages/home/page": "/pages/home",
+  "/page": "/",
+  "/pages/pricing/page": "/pages/pricing",
+  "/pages/login/page": "/pages/login",
+  "/pages/signup/page": "/pages/signup"
+}
