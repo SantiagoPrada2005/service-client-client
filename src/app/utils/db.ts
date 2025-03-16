@@ -20,7 +20,6 @@ const dbConfig = {
   }
 };
 
-console.log("db:config: ",dbConfig);
 console.log("Ruta Path: ",process.cwd())
 
 let poolConn: mysql.Pool | null = null;
