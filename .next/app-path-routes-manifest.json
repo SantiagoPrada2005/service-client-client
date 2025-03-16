@@ -1,16 +1,17 @@
 {
-  "/_not-found/page": "/_not-found",
-  "/api/ping/route": "/api/ping",
-  "/api/plans/[id]/route": "/api/plans/[id]",
+  "/api/organizations/route": "/api/organizations",
   "/api/plans/route": "/api/plans",
+  "/_not-found/page": "/_not-found",
   "/api/users/auth/login/route": "/api/users/auth/login",
   "/api/users/createUsers/route": "/api/users/createUsers",
+  "/api/plans/[id]/route": "/api/plans/[id]",
+  "/api/ping/route": "/api/ping",
   "/api/users/getUsers/[id]/route": "/api/users/getUsers/[id]",
   "/api/users/getUsers/route": "/api/users/getUsers",
   "/favicon.ico/route": "/favicon.ico",
   "/page": "/",
-  "/pages/home/page": "/pages/home",
   "/pages/login/page": "/pages/login",
+  "/pages/home/page": "/pages/home",
   "/pages/pricing/page": "/pages/pricing",
   "/pages/signup/page": "/pages/signup"
 }
