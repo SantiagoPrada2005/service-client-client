@@ -51,6 +51,12 @@
       "namedRegex": "^/favicon\\.ico(?:/)?$"
     },
     {
+      "page": "/pages/chat",
+      "regex": "^/pages/chat(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/pages/chat(?:/)?$"
+    },
+    {
       "page": "/pages/home",
       "regex": "^/pages/home(?:/)?$",
       "routeKeys": {},
