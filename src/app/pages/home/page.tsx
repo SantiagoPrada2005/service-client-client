@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function MainPage() {
   const [activeTab, setActiveTab] = useState('builder');
@@ -80,23 +81,25 @@ export default function MainPage() {
                 </div>
 
                 {/* Project Card */}
-                <div className="bg-[#3a3a3a]/30 backdrop-blur-sm rounded-lg p-6 border border-[#4a4a4a] hover:border-[#5a5a5a] transition-all duration-300 cursor-pointer">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <div className="bg-[#4a4a4a] p-2 rounded mr-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
+                <Link href="/pages/chat" className="block">
+                  <div className="bg-[#3a3a3a]/30 backdrop-blur-sm rounded-lg p-6 border border-[#4a4a4a] hover:border-[#5a5a5a] transition-all duration-300 cursor-pointer">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className="bg-[#4a4a4a] p-2 rounded mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-sm font-medium">TEST</h3>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-sm font-medium">TEST</h3>
+                      <div className="text-xs text-gray-500">
+                        Gemini 2 Flash
                       </div>
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      Gemini 2 Flash
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             )}
 
