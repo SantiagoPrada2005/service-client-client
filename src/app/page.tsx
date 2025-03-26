@@ -2,32 +2,63 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { APP_NAME } from './utils/constants';
+import { useState, useEffect, useRef } from 'react';
 
 export default function MainPage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeFeature, setActiveFeature] = useState(0);
+  
+  // Cambiar la característica destacada cada 5 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Detectar scroll para cambiar el estilo del header
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
   return (
-    <div className="min-h-screen flex flex-col bg-[#000000]">
+    <div className="min-h-screen flex flex-col bg-[#000000] overflow-x-hidden">
       {/* Header */}
-      <header className="fixed w-full top-0 z-50 bg-[#030712]/80 backdrop-blur-sm border-b border-slate-800">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center gap-7">
-            <h1 className="text-2xl font-bold text-white">{APP_NAME}</h1>
-            <Link href="/pages/pricing" className="text-sm text-slate-300 hover:text-white transition-all duration-500 ease-out">
-              Pricing
-            </Link>
+      <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#030712]/30 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-7'}`}>
+        <div className="container mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-8">
+            <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-8 h-8 rounded-md flex items-center justify-center text-white text-sm font-bold">SC</span>
+              {APP_NAME}
+            </h1>
+            <nav className="hidden md:flex items-center gap-6">
+              <Link href="/pages/pricing" className="text-sm text-slate-300 hover:text-white transition-all duration-300 ease-out hover:translate-y-[-2px]">
+                Precios
+              </Link>
+              <Link href="#features" className="text-sm text-slate-300 hover:text-white transition-all duration-300 ease-out hover:translate-y-[-2px]">
+                Características
+              </Link>
+              <Link href="#testimonials" className="text-sm text-slate-300 hover:text-white transition-all duration-300 ease-out hover:translate-y-[-2px]">
+                Testimonios
+              </Link>
+            </nav>
           </div>
           
           <div className="flex items-center gap-4">
-
             <Link href="/pages/login" 
-            className="bg-slate-800/50 text-white px-4 py-2 rounded-md font-medium transition-all duration-500 ease-out hover:bg-slate-700/50 border border-slate-700 hover:border-slate-600 hover:scale-105">
-            Log in
+              className="bg-slate-800/50 text-white px-5 py-2.5 rounded-md font-medium transition-all duration-300 ease-out hover:bg-slate-700/80 border border-slate-700/50 hover:border-slate-600 hover:translate-y-[-2px]">
+              Iniciar sesión
             </Link>
 
             <Link href="/pages/signup" 
-              className="group relative inline-flex items-center gap-2 px-4 py-2">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md opacity-0 blur-md transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-110"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md transition-all duration-500 ease-out group-hover:scale-105"></div>
-              <span className="relative text-white font-medium">Sign up</span>
+              className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-md overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-100 group-hover:opacity-90 transition-opacity duration-300"></div>
+              <div className="absolute inset-[-2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 blur-md transition-all duration-500 ease-out group-hover:opacity-70 group-hover:scale-105"></div>
+              <span className="relative text-white font-medium z-10">Registrarse</span>
             </Link>
           </div>
         </div>
