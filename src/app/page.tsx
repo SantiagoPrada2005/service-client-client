@@ -2,23 +2,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { APP_NAME } from './utils/constants';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 
 export default function MainPage() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeFeature, setActiveFeature] = useState(0);
-  
-  // Cambiar la característica destacada cada 5 segundos
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % 3);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // El estado isScrolled ya no es necesario para el header, pero se mantiene para otros usos si es necesario
-  
   return (
     <div className="min-h-screen flex flex-col bg-[#000000] overflow-x-hidden">
       {/* Header */}
@@ -38,16 +26,16 @@ export default function MainPage() {
               colaborando contigo para que seas más rápido y eficiente.
             </p>
             <div className="flex justify-center gap-4 relative">
-              <Link href="/pages/signup" 
+              <Link href="/pages/signup"
                 className="group relative inline-flex items-center gap-2 px-8 py-3">
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md opacity-0 blur-md transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-110"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md transition-all duration-500 ease-out group-hover:scale-105"></div>
                 <div className="relative flex items-center gap-2 text-white font-medium">
-                  <span className="transition-transform duration-500 ease-out group-hover:scale-125">⚡</span> 
+                  <span className="transition-transform duration-500 ease-out group-hover:scale-125">⚡</span>
                   <span>Comenzar ahora</span>
                 </div>
               </Link>
-              <a href="https://github.com/WDHAN4NR" 
+              <a href="https://github.com/WDHAN4NR"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-slate-800/50 text-white px-8 py-3 rounded-md font-medium transition-all duration-500 ease-out hover:bg-slate-700/50 border border-slate-700 hover:border-slate-600 hover:scale-105">
@@ -111,7 +99,7 @@ export default function MainPage() {
                 </h2>
                 <p className="text-lg text-slate-400">Orgullosamente apoyados por instituciones que impulsan la excelencia académica</p>
               </div>
-              
+
               <div className="flex flex-wrap justify-center items-center gap-20">
                 {/* Tradicional Coffee */}
                 <div className="group">
@@ -126,8 +114,9 @@ export default function MainPage() {
                         width={150}
                         height={60}
                         className="transition-transform duration-500 group-hover:scale-110"
+                        // Considera añadir priority={true} si esta imagen es crítica para el LCP
                       />
-                      <div className="mt-4">
+                      <div className="mt-4 text-center"> {/* Centrado el texto del sponsor */}
                         <p className="text-sm text-slate-500">Innovation Partner</p>
                         <h3 className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                           Tradicional Coffee
@@ -150,8 +139,9 @@ export default function MainPage() {
                         width={150}
                         height={60}
                         className="transition-transform duration-500 group-hover:scale-110"
+                         // Considera añadir priority={true} si esta imagen es crítica para el LCP
                       />
-                      <div className="mt-4">
+                      <div className="mt-4 text-center"> {/* Centrado el texto del sponsor */}
                         <p className="text-sm text-slate-500">Enterprise Partner</p>
                         <h3 className="text-2xl font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
                           INTEP
@@ -209,11 +199,11 @@ export default function MainPage() {
           </div>
 
           {/* CTA Section */}
-          
+          <div className="py-20"> {/* Añadido padding vertical para separar */}
             <div className="max-w-4xl mx-auto text-center px-4">
               <h2 className="text-4xl font-bold text-white mb-6">¿Listo para transformar tu forma de trabajar?</h2>
               <p className="text-xl text-slate-300 mb-8">Únete a miles de profesionales que ya están aprovechando el poder de {APP_NAME}</p>
-              <Link href="/pages/signup" 
+              <Link href="/pages/signup"
                 className="group relative inline-flex items-center gap-2 px-8 py-4 text-lg">
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md opacity-0 blur-md transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-110"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md transition-all duration-500 ease-out group-hover:scale-105"></div>
@@ -223,7 +213,7 @@ export default function MainPage() {
                 </div>
               </Link>
             </div>
-          
+          </div>
 
           {/* Multimodal Features Section */}
           <div className="max-w-6xl mx-auto py-16 relative">
@@ -232,7 +222,7 @@ export default function MainPage() {
                 <div className="inline-block mb-4 px-4 py-1 bg-red-500/10 text-red-400 text-sm font-medium rounded-full"># Multimodalidad</div>
                 <h2 className="text-4xl font-bold text-white mb-6">Sube imágenes para clarificar requerimientos</h2>
                 <p className="text-lg text-slate-400 leading-relaxed">
-                  Con capacidades multimodales avanzadas, {APP_NAME} entiende tus subidas de imágenes con precisión, 
+                  Con capacidades multimodales avanzadas, {APP_NAME} entiende tus subidas de imágenes con precisión,
                   agilizando la colaboración y aumentando la eficiencia.
                 </p>
               </div>
@@ -245,6 +235,7 @@ export default function MainPage() {
                     width={600}
                     height={400}
                     className="w-full h-auto"
+                    // Considera añadir priority={true} si esta imagen es crítica para el LCP
                   />
                 </div>
               </div>
@@ -264,19 +255,17 @@ export default function MainPage() {
               <div className="flex space-x-4">
                 <a href="#" className="text-slate-400 hover:text-white transition-colors duration-300">
                   <span className="sr-only">Twitter</span>
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                  </svg>
+                  {/* SVG Twitter */}
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
                 </a>
                 <a href="https://github.com/WDHAN4NR" className="text-slate-400 hover:text-white transition-colors duration-300">
                   <span className="sr-only">GitHub</span>
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                  </svg>
+                  {/* SVG GitHub */}
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" /></svg>
                 </a>
               </div>
             </div>
-            
+
             <div>
               <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Producto</h4>
               <ul className="space-y-2">
@@ -286,7 +275,7 @@ export default function MainPage() {
                 <li><a href="#" className="text-slate-400 hover:text-white transition-colors duration-300">Testimonios</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Soporte</h4>
               <ul className="space-y-2">
@@ -296,7 +285,7 @@ export default function MainPage() {
                 <li><a href="#" className="text-slate-400 hover:text-white transition-colors duration-300">Contacto</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Empresa</h4>
               <ul className="space-y-2">
@@ -307,9 +296,9 @@ export default function MainPage() {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-slate-800 pt-8">
-            <p className="text-slate-400 text-sm text-center">&copy; {new Date().getFullYear()} {APP_NAME}. Todos los derechos reservados.</p>
+            <p className="text-slate-400 text-sm text-center">© {new Date().getFullYear()} {APP_NAME}. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
