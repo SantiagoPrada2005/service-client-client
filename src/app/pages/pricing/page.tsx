@@ -2,36 +2,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { APP_NAME } from '../../utils/constants';
+import Header from '../../components/Header';
 
 export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#000000]">
       {/* Header */}
-      <header className="fixed w-full top-0 z-50 bg-[#030712]/80 backdrop-blur-sm border-b border-slate-800">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center gap-7">
-            <h1 className="text-2xl font-bold text-white">{APP_NAME}</h1>
-            <Link href="/." className="text-sm text-slate-300 hover:text-white transition-all duration-500 ease-out">
-              Inicio
-            </Link>
-          </div>
-          
-          <div className="flex items-center gap-4">
-
-            <Link href="/pages/login" 
-            className="bg-slate-800/50 text-white px-4 py-2 rounded-md font-medium transition-all duration-500 ease-out hover:bg-slate-700/50 border border-slate-700 hover:border-slate-600 hover:scale-105">
-            Log in
-            </Link>
-
-            <Link href="/pages/signup" 
-              className="group relative inline-flex items-center gap-2 px-4 py-2">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md opacity-0 blur-md transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-110"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-md transition-all duration-500 ease-out group-hover:scale-105"></div>
-              <span className="relative text-white font-medium">Sign up</span>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header isTransparent={true} />
 
       {/* Main Content */}
       <main className="flex-1 pt-24">
