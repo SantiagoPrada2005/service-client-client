@@ -1,0 +1,78 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# --- REGLAS (Rules) ---
+# Instrucciones de alto nivel para la IA sobre cómo comportarse en este proyecto.
+# Son como un "system prompt" persistente para las interacciones de IA.
+rules:
+  - rule: |
+      You are an expert AI assistant specialized in **Next.js 15**, **Tailwind CSS 4**, and **TypeScript 5**.
+      This project strictly uses these specific versions.
+
+      **Core Stack & Version Constraints:**
+      - **Framework:** Next.js version 15 (using the App Router).
+      - **Styling:** Tailwind CSS version 4. Pay close attention to its specific configuration (`tailwind.config.ts`) and utility classes. Do NOT suggest Tailwind v3 patterns or configuration.
+      - **Language:** TypeScript version 5. Utilize modern TypeScript features and ensure strong typing.
+      - **Database:** MySQL hosted on Google Cloud Platform (GCP). Assume database interactions might use an ORM like Prisma or Drizzle, or direct SQL queries compatible with MySQL.
+
+      **Key Directives:**
+      1.  **Strict Version Adherence:** ONLY generate code, provide explanations, and suggest configurations that are compatible with Next.js 15, Tailwind CSS 4, and TypeScript 5. Explicitly AVOID features, APIs, or patterns from older versions (e.g., Next.js Pages Router, deprecated Tailwind classes, older TypeScript syntax).
+      2.  **App Router Focus:** All suggestions related to Next.js should assume the App Router (`app/` directory) structure and conventions (Server Components, Client Components, Route Handlers, Metadata API, etc.).
+      3.  **Tailwind 4 Specifics:** Understand that Tailwind 4 might have different configuration defaults or features compared to v3. Base suggestions on the project's `tailwind.config.ts`.
+      4.  **TypeScript Best Practices:** Maintain type safety. Use inferred types where appropriate but explicit types for function signatures, complex objects, and API boundaries. Leverage TS 5 features like `satisfies`, improved enums, etc., where applicable.
+      5.  **Project Consistency:** Prioritize adhering to the existing code style, formatting (check for Prettier/ESLint configs), naming conventions, and architectural patterns found within this specific project. Refer to files provided in `localDocs` for context.
+      6.  **Database Context:** When generating code related to database operations, ensure it's compatible with MySQL syntax. If an ORM schema (like Prisma) is provided in `localDocs`, use it as the source of truth for models and relations.
+      7.  **No Unsolicited Changes:** Do not suggest changing major dependencies, architecture, or versions unless specifically asked to explore upgrade paths or alternatives.
+
+# --- DOCUMENTOS LOCALES (localDocs) ---
+# Archivos o directorios específicos que la IA debe conocer bien para entender el contexto del proyecto.
+localDocs:
+  # --- Core Configuration Files ---
+  - path: package.json
+    description: Defines project dependencies (including exact versions of Next.js, React, Tailwind, TS, etc.), scripts, and project metadata. CRITICAL for version context.
+  - path: next.config.mjs # o .js si usas CommonJS
+    description: Configuration file for Next.js 15. Contains settings for build, runtime, plugins, etc.
+  - path: tailwind.config.ts # o .js
+    description: Configuration file for Tailwind CSS v4. Essential for understanding theme, plugins, and content paths.
+  - path: tsconfig.json
+    description: TypeScript compiler options. Defines how TS code is checked and compiled.
+
+  # --- Core Application Structure (Ajusta según tu proyecto) ---
+  - path: app/layout.tsx # o .jsx
+    description: The root layout file for the Next.js App Router. Often includes global styles, context providers, and base HTML structure.
+  # - path: app/globals.css # O el archivo CSS principal si Tailwind importa capas aquí.
+  #   description: Global CSS file, often includes Tailwind directives (`@tailwind base;`, etc.).
+  # - path: lib/ # O utils/, core/, src/lib/, etc.
+  #   description: Directory containing shared utility functions, constants, or core logic.
+  # - path: components/ # O ui/, views/, src/components/, etc.
+  #   description: Directory containing reusable React components.
+
+  # --- Database (Si usas ORM, descomenta y ajusta) ---
+  # - path: prisma/schema.prisma # Si usas Prisma
+  #   description: Prisma schema defining database models, relations, and connection details (for structure, not credentials).
+  # - path: src/db/schema.ts # Si usas Drizzle ORM (ejemplo de ruta)
+  #   description: Drizzle schema defining database tables and types.
+
+# --- RUTAS A IGNORAR (ignorePaths) ---
+# Archivos y directorios que la IA debe ignorar al buscar contexto o realizar cambios.
+ignorePaths:
+  - node_modules/
+  - .next/
+  - .git/
+  - out/ # Si usas `next export`
+  - build/ # O dist/ u otros directorios de compilación
+  - coverage/ # Directorios de reportes de tests
+  - .vscode/ # Configuración específica del editor VS Code
+  - .idea/ # Configuración específica de editores JetBrains
+  # - .env* # IGNORAR archivos de variables de entorno por seguridad
+  # Añade cualquier otro archivo/directorio generado o irrelevante
+
+# --- (Opcional) AUTO CONTEXT ---
+# Puedes ajustar cómo Cursor busca contexto automáticamente si los defaults no son suficientes.
+# Los defaults suelen ser buenos, pero puedes refinar aquí si es necesario.
+# autoContext:
+#   include: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx', '**/*.json', '**/*.css', '**/*.md'] # Archivos a incluir
+#   exclude: ['node_modules/**', '.next/**', '.git/**', 'out/**', 'build/**', 'dist/**'] # Archivos/patrones a excluir

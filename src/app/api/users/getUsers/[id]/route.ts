@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server';
+import {UserDAO} from '../../../../utils/DAO/UserDAO';
 import { query, } from '../../../../utils/db';
 import { User } from '../../../../utils/Types/User';
 
@@ -23,7 +24,7 @@ export async function GET(
     context: RouteContext
 ) {
     try {
-        const {id} = context.params;
+        const {id} = await context.params;
         // Ejemplo de mejora: Validación de parámetros
         if (!/^\d+$/.test(id)) {
             return NextResponse.json(
@@ -31,7 +32,9 @@ export async function GET(
               { status: 400 }
             );
           }
-        const usuarios = await query<[User]>(`SELECT * FROM users WHERE id = ?`, [id]);
+
+        const userDAO = new UserDAO();
+        const usuarios = await userDAO.findById(parseInt(id));
         
         return NextResponse.json(
             { 
