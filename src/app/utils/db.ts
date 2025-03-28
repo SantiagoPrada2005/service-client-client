@@ -1,7 +1,6 @@
 import mysql from 'mysql2/promise';
 import path from 'path';
 import fs from 'fs';
-import { config } from 'process';
 
 // Configuración de la conexión
 const dbConfig = {
