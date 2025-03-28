@@ -86,12 +86,12 @@ export default function MainPage() {
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center">
                         <div className="bg-[#4a4a4a] p-2 rounded mr-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                           </svg>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium">TEST</h3>
+                          <h3 className="text-sm font-medium">ChatBots</h3>
                         </div>
                       </div>
                       <div className="text-xs text-gray-500">
@@ -102,6 +102,9 @@ export default function MainPage() {
                 </Link>
               </div>
             )}
+
+
+
 
             {activeTab === 'chat' && (
               <div className="h-full flex items-center justify-center">

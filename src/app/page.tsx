@@ -19,7 +19,7 @@ export default function MainPage() {
           <div className="text-center max-w-4xl mx-auto py-20">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[500px] w-full bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-transparent blur-3xl"></div>
             <h2 className="text-7xl font-bold text-white mb-6 relative">
-              Ship Faster with <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">{APP_NAME}</span>
+              Conectate rapido con <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">{APP_NAME}</span>
             </h2>
             <p className="text-xl text-slate-300 mb-8 relative">
             {APP_NAME} es una plataforma adaptativa que transforma tu forma de trabajar,

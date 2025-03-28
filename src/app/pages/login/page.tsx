@@ -73,6 +73,8 @@ function LoginForm() {
   }, []);
 
   return (
+
+    
     <div className="w-1/2 bg-[#000000] flex items-center justify-center relative">
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-purple-500/10 to-transparent"></div>
       <div className="w-[400px] py-8 relative">
@@ -185,11 +187,17 @@ export default function LoginPage() {
         </div>
 
         {/* Right Side - Form */}
+        <Link href="/pages/pricing" className="group relative inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-md overflow-hidden">
+          <button className="ml-auto text-gray-500 hover:text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </Link>
         <Suspense fallback={<div className="w-1/2 flex items-center justify-center"><div className="text-white">Cargando...</div></div>}>
           <LoginForm />
         </Suspense>
       </div>
     </div>
   );
-  LoginForm();
 }

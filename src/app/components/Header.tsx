@@ -37,10 +37,10 @@ export default function Header({ isTransparent = true }) {
             <Link href="/pages/pricing" className={`text-sm ${pathname === '/pages/pricing' ? 'text-white font-medium' : 'text-slate-300'} hover:text-white transition-all duration-300 ease-out hover:translate-y-[-2px]`}>
               Precios
             </Link>
-            <Link href="#features" className="text-sm text-slate-300 hover:text-white transition-all duration-300 ease-out hover:translate-y-[-2px]">
+            <Link href="/pages/pricing" className={`text-sm ${pathname === '/pages/pricing' ? 'text-white font-medium' : 'text-slate-300'} hover:text-white transition-all duration-300 ease-out hover:translate-y-[-2px]`}>
               Características
             </Link>
-            <Link href="#testimonials" className="text-sm text-slate-300 hover:text-white transition-all duration-300 ease-out hover:translate-y-[-2px]">
+            <Link href="/pages/pricing" className={`text-sm ${pathname === '/pages/pricing' ? 'text-white font-medium' : 'text-slate-300'} hover:text-white transition-all duration-300 ease-out hover:translate-y-[-2px]`}>
               Testimonios
             </Link>
           </nav>
