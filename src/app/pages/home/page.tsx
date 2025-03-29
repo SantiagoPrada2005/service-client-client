@@ -80,26 +80,95 @@ export default function MainPage() {
                   </div>
                 </div>
 
-                {/* Project Card */}
-                <Link href="/pages/chat" className="block">
-                  <div className="bg-[#3a3a3a]/30 backdrop-blur-sm rounded-lg p-6 border border-[#4a4a4a] hover:border-[#5a5a5a] transition-all duration-300 cursor-pointer">
-                    <div className="flex items-center justify-between mb-4">
+                {/* Botones Cuadrados */}
+                <div className="grid grid-cols-3 gap-4 mb-8">
+                  {/* Botón 1: Crear Chatbot */}
+                  <Link href="/pages/create-chatbot" className="block">
+                    <div className="bg-[#3a3a3a]/30 backdrop-blur-sm rounded-lg p-6 border border-[#4a4a4a] hover:border-[#5a5a5a] transition-all duration-300 cursor-pointer h-full">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <div className="bg-[#4a4a4a] p-2 rounded mr-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v16m8-8H4" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-sm font-medium">Crear Chatbot</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+
+                  {/* Botón 2: Mis Chatbots */}
+                  <Link href="/pages/chat" className="block">
+                    <div className="bg-[#3a3a3a]/30 backdrop-blur-sm rounded-lg p-6 border border-[#4a4a4a] hover:border-[#5a5a5a] transition-all duration-300 cursor-pointer h-full">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <div className="bg-[#4a4a4a] p-2 rounded mr-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-sm font-medium">Mis Chatbots</h3>
+                          </div>
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          Gemini 2 Flash
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+
+                  {/* Botón 3: Vacío para uso futuro */}
+                  <div className="bg-[#3a3a3a]/30 backdrop-blur-sm rounded-lg p-6 border border-[#4a4a4a] hover:border-[#5a5a5a] transition-all duration-300 cursor-pointer h-full">
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="bg-[#4a4a4a] p-2 rounded mr-3">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                           </svg>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium">ChatBots</h3>
+                          <h3 className="text-sm font-medium">Botón 3</h3>
                         </div>
-                      </div>
-                      <div className="text-xs text-gray-500">
-                        Gemini 2 Flash
                       </div>
                     </div>
                   </div>
-                </Link>
+
+                  {/* Botón 4: Vacío para uso futuro */}
+                  <div className="bg-[#3a3a3a]/30 backdrop-blur-sm rounded-lg p-6 border border-[#4a4a4a] hover:border-[#5a5a5a] transition-all duration-300 cursor-pointer h-full">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="bg-[#4a4a4a] p-2 rounded mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-sm font-medium">Botón 4</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Botón 5: Vacío para uso futuro */}
+                  <div className="bg-[#3a3a3a]/30 backdrop-blur-sm rounded-lg p-6 border border-[#4a4a4a] hover:border-[#5a5a5a] transition-all duration-300 cursor-pointer h-full">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="bg-[#4a4a4a] p-2 rounded mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-sm font-medium">Botón 5</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
 
